@@ -7,14 +7,14 @@
 #include "SibJam2/Objects/SGJ_QuestResultBoard.h"
 
 USGJ_QuestType::USGJ_QuestType()
-	: ChosenCount(0),
-	  CostPerItem(0),
+	: CostPerItem(0),
 	  ForgivenCalcError(2),
+	  ChosenCount(0),
 	  RealCount(0),
-	  BoardIncomeName(FText::FromString("Прибыль от деятельности")),
 	  Adventurer(nullptr),
 	  GoldSource(nullptr),
-	  ResultBoard(nullptr)
+	  ResultBoard(nullptr),
+	  BoardIncomeName(FText::FromString("Прибыль от деятельности"))
 
 {
 }
