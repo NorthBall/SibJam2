@@ -13,8 +13,12 @@ bool USGJ_Player_HoldComponent::SetNewControlledActor(AActor* NewActor)
 	{
 		return false;
 	}
+
+	if(IsValid(ControlledActor))
+	{
+		ControlledActor->Destroy();	
+	}
 	
-	ControlledActor->Destroy();	
 	ControlledActor = NewActor;
 
 	if (IsValid(ControlledActor))
