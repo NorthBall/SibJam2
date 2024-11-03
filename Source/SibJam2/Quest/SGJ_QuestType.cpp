@@ -3,14 +3,61 @@
 
 #include "SGJ_QuestType.h"
 
+#include "SibJam2/Objects/SGJ_GoldPile.h"
+#include "SibJam2/Objects/SGJ_QuestResultBoard.h"
+
 USGJ_QuestType::USGJ_QuestType()
 	: ChosenCount(0),
-	  Adventurer(nullptr)
+	  CostPerItem(0),
+	  ForgivenCalcError(2),
+	  RealCount(0),
+	  BoardIncomeName(FText::FromString("Прибыль от деятельности")),
+	  Adventurer(nullptr),
+	  GoldSource(nullptr),
+	  ResultBoard(nullptr)
+
 {
 }
 
 void USGJ_QuestType::OnQuestGivenToAdventurer()
 {
+}
+
+void USGJ_QuestType::OnQuestCompleted(FText CustomPaymentName)
+{
+	if (IsValid(GoldSource) && CustomPaymentName.IsEmpty())
+	{
+		int32 ChangeInGold = (ForgivenCalcError - FMath::Abs(RealCount - ChosenCount)) * CostPerItem;
+		GoldSource->SetGold(GoldSource->GetGold() + ChangeInGold);
+	}
+
+	if (IsValid(ResultBoard))
+	{
+		int32 Income = (ForgivenCalcError + RealCount) * CostPerItem;
+		TArray<FText> IncomeArray;
+		IncomeArray.Add(FText::Format(FTextFormat::FromString("{0} ({1})"), BoardIncomeName, Income));
+		ResultBoard->IncomeArray = IncomeArray;
+
+		TArray<FText> ExpenseArray;
+		if (CustomPaymentName.IsEmpty())
+		{
+			int32 Payment = ChosenCount * CostPerItem;
+			ExpenseArray.Add(FText::Format(FTextFormat::FromString("{0} ({1})"), BoardPayName, Payment));
+		}
+		else
+		{
+			ExpenseArray.Add(CustomPaymentName);
+		}
+
+		int32 Penalty = (RealCount - ChosenCount) * CostPerItem;
+		if (Penalty > 0)
+		{
+			ExpenseArray.Add(FText::Format(FTextFormat::FromString("{0} ({1})"), BoardPenaltyName, Income));
+		}
+
+		ResultBoard->ExpenseArray = ExpenseArray;
+		ResultBoard->UpdateWidget();
+	}
 }
 
 bool USGJ_QuestType::GiveQuestToAdventurer_Implementation(const FText& QuestDescription, FText& ErrorDescription)

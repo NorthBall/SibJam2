@@ -21,4 +21,7 @@ class SIBJAM2_API ISGJ_Interactable
 public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable") 
 	void InteractWith(AActor* Caller);
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Interactable") 
+	FText GetLookOnMessage();
 };
