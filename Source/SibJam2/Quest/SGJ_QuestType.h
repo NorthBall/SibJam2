@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BehaviorTree/BehaviorTree.h"
 #include "UObject/NoExportTypes.h"
 #include "SGJ_QuestType.generated.h"
+
 
 UCLASS(Blueprintable, BlueprintType)
 class SIBJAM2_API USGJ_QuestType : public UObject
@@ -20,6 +22,8 @@ public:
 	int32 ChosenCount;
 	UPROPERTY(BlueprintReadWrite)
 	AActor* Adventurer;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBehaviorTree* AdventurerQuestTree;
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool GiveQuestToAdventurer(const FText& QuestDescription, FText& ErrorDescription);
