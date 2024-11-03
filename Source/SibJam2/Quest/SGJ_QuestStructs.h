@@ -6,7 +6,10 @@
 UENUM(BlueprintType)
 enum ESGJ_DialogueType
 {
-	DT_FirstSpeech UMETA(DisplayName = "FirstSpeach")
+	DT_FirstSpeech UMETA(DisplayName = "FirstSpeach"),
+	DT_GotQuest UMETA(DisplayName = "GotQuest"),
+	DT_QuestDone UMETA(DisplayName = "QuestDone"),
+	DT_SayBye UMETA(DisplayName = "SayBye"),
 };
 
 USTRUCT(BlueprintType)
