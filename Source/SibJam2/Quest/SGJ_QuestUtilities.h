@@ -17,5 +17,6 @@ class SIBJAM2_API USGJ_QuestUtilities : public UBlueprintFunctionLibrary
 	
 public:
 	UFUNCTION(BlueprintCallable)
-	static FText GetRandomDialogue(const TArray<FSGJ_DialogueInfo>& DialogueArray, const TMap<FString, FSGJ_NameArray>& NameMap);
+	static FText GetRandomDialogue(const TArray<FSGJ_DialogueInfo>& DialogueArray, const TMap<FString, FSGJ_NameArray>& NameMap, const ESGJ_DialogueType
+	                               DialogueType);
 };

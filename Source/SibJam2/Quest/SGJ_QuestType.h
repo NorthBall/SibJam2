@@ -3,9 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "BehaviorTree/BehaviorTree.h"
 #include "UObject/NoExportTypes.h"
 #include "SGJ_QuestType.generated.h"
-
 
 class ASGJ_QuestResultBoard;
 class ASGJ_GoldPile;
@@ -30,6 +30,8 @@ public:
 	int32 RealCount;
 	UPROPERTY(BlueprintReadWrite)
 	AActor* Adventurer;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UBehaviorTree* AdventurerQuestTree;
 
 	UPROPERTY(BlueprintReadWrite)
 	ASGJ_GoldPile* GoldSource;
