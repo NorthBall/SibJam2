@@ -34,7 +34,7 @@ void ASGJ_GoldPile::InteractWith_Implementation(AActor* Caller)
 
 FText ASGJ_GoldPile::GetLookOnMessage_Implementation()
 {
-	return FText::Format(FTextFormat::FromString("{0} ({1})"), FText::FromString("Золото"), Gold);
+	return FText::Format(FTextFormat::FromString("{0} ({1})"), FText::FromString(TEXT("Золото")), Gold);
 }
 
 int32 ASGJ_GoldPile::GetGold() const

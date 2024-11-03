@@ -13,6 +13,6 @@ void ASGJ_QuestResultBoard::InteractWith_Implementation(AActor* Caller)
 
 FText ASGJ_QuestResultBoard::GetLookOnMessage_Implementation()
 {
-	return FText::FromString("Результаты квеста");
+	return FText::FromString(TEXT("Результаты квеста"));
 }
 

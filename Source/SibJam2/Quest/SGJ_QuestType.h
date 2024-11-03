@@ -47,9 +47,16 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	bool GiveQuestToAdventurer(const FText& QuestDescription, FText& ErrorDescription);
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void CalcRealCount();
 
 	UFUNCTION(BlueprintCallable)
 	void OnQuestGivenToAdventurer();
 	UFUNCTION(BlueprintCallable)
 	void OnQuestCompleted(FText CustomPaymentName);
+
+	UFUNCTION(BlueprintPure)
+	AActor* GetGameMode() const;
+	UFUNCTION(BlueprintPure)
+	AActor* GetGameState() const;
 };

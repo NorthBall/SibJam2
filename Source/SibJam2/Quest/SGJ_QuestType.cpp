@@ -3,6 +3,8 @@
 
 #include "SGJ_QuestType.h"
 
+#include "GameFramework/GameModeBase.h"
+#include "GameFramework/GameStateBase.h"
 #include "SibJam2/Objects/SGJ_GoldPile.h"
 #include "SibJam2/Objects/SGJ_QuestResultBoard.h"
 
@@ -14,7 +16,7 @@ USGJ_QuestType::USGJ_QuestType()
 	  Adventurer(nullptr),
 	  GoldSource(nullptr),
 	  ResultBoard(nullptr),
-	  BoardIncomeName(FText::FromString("Прибыль от деятельности"))
+	  BoardIncomeName(FText::FromString(TEXT("Прибыль от деятельности")))
 
 {
 }
@@ -60,8 +62,28 @@ void USGJ_QuestType::OnQuestCompleted(FText CustomPaymentName)
 	}
 }
 
+AActor* USGJ_QuestType::GetGameMode() const
+{
+	if(!IsValid(GetWorld()))
+	{
+		return nullptr;
+	}
+
+	return GetWorld()->GetAuthGameMode();
+}
+
+AActor* USGJ_QuestType::GetGameState() const
+{
+	if(!IsValid(GetWorld()))
+	{
+		return nullptr;
+	}
+
+	return GetWorld()->GetGameState();
+}
+
 bool USGJ_QuestType::GiveQuestToAdventurer_Implementation(const FText& QuestDescription, FText& ErrorDescription)
 {
-	ErrorDescription = FText::FromString("Неправильный тип квеста");
+	ErrorDescription = FText::FromString(TEXT("Неправильный тип квеста"));
 	return false;
 }
