@@ -6,7 +6,6 @@
 #include "UObject/NoExportTypes.h"
 #include "SGJ_QuestType.generated.h"
 
-
 UCLASS(Blueprintable, BlueprintType)
 class SIBJAM2_API USGJ_QuestType : public UObject
 {
