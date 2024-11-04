@@ -28,7 +28,7 @@ public:
 	virtual void InteractWith_Implementation(AActor* Caller) override;
 	virtual FText GetLookOnMessage_Implementation() override;
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TEnumAsByte<ESGJ_TimerStates> TimerState;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ASGJ_Timer_Watch* TimerWatch;

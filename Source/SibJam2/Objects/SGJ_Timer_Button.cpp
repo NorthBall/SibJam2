@@ -30,8 +30,9 @@ FText ASGJ_Timer_Button::GetLookOnMessage_Implementation()
 
 	if (TimerState == ESGJ_TimerStates::Ringed)
 	{
-		FText::FromString(TEXT("Выключить таймер (вовремя)"));
+		return FText::FromString(TEXT("Выключить таймер (вовремя)"));
 	}
+	
 	return FText();
 }
 
