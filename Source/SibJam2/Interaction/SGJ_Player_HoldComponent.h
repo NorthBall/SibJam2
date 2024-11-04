@@ -17,7 +17,7 @@ public:
 	USGJ_Player_HoldComponent();
 
 	UFUNCTION(BlueprintCallable)
-	bool SetNewControlledActor(AActor* NewActor);
+	bool SetNewControlledActor(AActor* NewActor, bool ShouldDestroy=true);
 	UFUNCTION(BlueprintPure)
 	AActor* GetControlledActor() const;
 
