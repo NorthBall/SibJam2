@@ -7,7 +7,7 @@ USGJ_Player_HoldComponent::USGJ_Player_HoldComponent()
 {
 }
 
-bool USGJ_Player_HoldComponent::SetNewControlledActor(AActor* NewActor)
+bool USGJ_Player_HoldComponent::SetNewControlledActor(AActor* NewActor, bool ShouldDestroy)
 {
 	if (ControlledActor == NewActor)
 	{
@@ -16,7 +16,13 @@ bool USGJ_Player_HoldComponent::SetNewControlledActor(AActor* NewActor)
 
 	if(IsValid(ControlledActor))
 	{
-		ControlledActor->Destroy();	
+		if(ShouldDestroy)
+		{
+			ControlledActor->Destroy();
+		} else
+		{
+			ControlledActor->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+		}
 	}
 	
 	ControlledActor = NewActor;
