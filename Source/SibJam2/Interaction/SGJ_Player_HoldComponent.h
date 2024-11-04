@@ -22,6 +22,6 @@ public:
 	AActor* GetControlledActor() const;
 
 protected:
-	UPROPERTY(BlueprintReadWrite)
+	UPROPERTY()
 	AActor* ControlledActor;		
 };
