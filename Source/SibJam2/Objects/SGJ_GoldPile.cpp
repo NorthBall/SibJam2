@@ -28,7 +28,7 @@ void ASGJ_GoldPile::InteractWith_Implementation(AActor* Caller)
 		return;
 	}
 
-	auto* Coin = GetWorld()->SpawnActor<ASGJ_HoldCoin>(ASGJ_HoldCoin::StaticClass());
+	auto* Coin = GetWorld()->SpawnActor<ASGJ_HoldCoin>(CoinClass);
 	HoldComponent->SetNewControlledActor(Coin);	
 }
 

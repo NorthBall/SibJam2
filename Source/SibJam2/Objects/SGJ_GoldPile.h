@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "SibJam2/Interaction/SGJ_Interactable.h"
+#include "Hold/SGJ_HoldCoin.h"
 #include "SGJ_GoldPile.generated.h"
+
 
 UCLASS()
 class SIBJAM2_API ASGJ_GoldPile : public AActor, public ISGJ_Interactable
@@ -14,6 +16,9 @@ class SIBJAM2_API ASGJ_GoldPile : public AActor, public ISGJ_Interactable
 	
 public:	
 	ASGJ_GoldPile();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<ASGJ_HoldCoin> CoinClass {ASGJ_HoldCoin::StaticClass()};
 
 	virtual void InteractWith_Implementation(AActor* Caller) override;
 	virtual FText GetLookOnMessage_Implementation() override;
