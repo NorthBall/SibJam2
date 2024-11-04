@@ -31,3 +31,13 @@ FText ASGJ_HeapBase::GetLookOnMessage_Implementation()
 	return LookOnText;
 }
 
+void ASGJ_HeapBase::SetHeapCount_Implementation(int32 NewCount)
+{
+	if(NewCount < 0)
+	{
+		return;
+	}
+	
+	HeapCount = NewCount;
+}
+

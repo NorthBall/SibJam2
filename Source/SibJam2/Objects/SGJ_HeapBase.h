@@ -18,9 +18,14 @@ public:
 	virtual void InteractWith_Implementation(AActor* Caller) override;
 	virtual FText GetLookOnMessage_Implementation() override;
 
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetHeapCount(int32 NewCount);
+	
 protected:
 	UPROPERTY(EditAnywhere)
 	FText LookOnText;
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AActor> HeapItemClass;
+	UPROPERTY(BlueprintReadOnly, EditAnywhere)
+	int32 HeapCount;
 };

@@ -51,7 +51,7 @@ void USGJ_QuestType::OnQuestCompleted(FText CustomPaymentName)
 			ExpenseArray.Add(CustomPaymentName);
 		}
 
-		int32 Penalty = (RealCount - ChosenCount) * CostPerItem;
+		int32 Penalty = 2 * (RealCount - ChosenCount) * CostPerItem;
 		if (Penalty > 0)
 		{
 			ExpenseArray.Add(FText::Format(FTextFormat::FromString("{0} ({1})"), BoardPenaltyName, Income));
